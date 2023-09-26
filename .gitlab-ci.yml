@@ -17,7 +17,7 @@ build-application:
     paths:
       - backend/target/*.jar
   only:
-    - environment/dev
+    - main
 
 deploy-backend-job:
   stage: deploy-backend
@@ -43,7 +43,7 @@ deploy-frontend-job:
     - scp -r -o StrictHostKeyChecking=no -i "${VM_PRIVATE_KEY}" Frontend.zip csci5308vm24@csci5308vm24.research.cs.dal.ca:/home/csci5308vm24/deploy-latest/Frontend.zip
     - ssh -i ${VM_PRIVATE_KEY} csci5308vm24@csci5308vm24.research.cs.dal.ca "/home/csci5308vm24/deploy-latest/stop-frontend.sh; /home/csci5308vm24/deploy-latest/start-frontend.sh"
   only:
-    - environment/dev
+    - main
 
 test-application:
   stage: test
@@ -53,4 +53,4 @@ test-application:
     - echo "Pipeline test started"
     - mvn verify
   only:
-    - environment/dev
+    - main
