@@ -24,7 +24,7 @@ deploy-backend-job:
   artifacts:
     paths:
       - backend/target
-  before_script:
+  
   script:
     - chmod og-rwx ${VM_PRIVATE_KEY}
     - scp -r -o StrictHostKeyChecking=no -i "${VM_PRIVATE_KEY}" backend/target/*.jar csci5308vm24@csci5308vm24.research.cs.dal.ca:/home/csci5308vm24/deploy-latest/demo-0.0.1-SNAPSHOT.jar
